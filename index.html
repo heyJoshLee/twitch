@@ -8,13 +8,55 @@
 </head>
 <body>
 
+  <main id="main">
+    <div id="app_view">
+      <h1>Twitch Channels</h1>
+      <form action="#" method="#">
+      <input type="text" id="new_channel_name">
+      <input type="submit" value="Add ">
+    </form>
 
-
-  <main>
-
+    <ul id="channels_list"></ul> 
+    </div>
   </main>
 
+  <script id="channel_template" type="handlebars-template">
 
+  {{#if error}}
+  <div class="image_holder"></div>
+    <p>
+      Error: {{error}}
+    </p>
+
+    {{else}}
+
+      {{#if image}}
+        <a href="{{link}}" target="_blank">
+          <img class="channel_logo" src="{{image}}">
+        </a>
+      {{/if}}
+        <div class="info">
+      <h1>
+        <a href="{{link}}" target="_blank"> 
+          {{name}} 
+        </a>
+      </h1>
+
+    {{# if game}}
+    <p> 
+      <a href="{{link}}" target="_blank">  Playing: {{game}} </a>
+    </p>
+      {{else}}
+      <p>Not online </p>
+    {{/if}}
+    </div>
+      
+  {{/if}}
+
+  <div class="delete">x</div>
+    
+    
+  </script>
 
 
 <script src="javascripts/libs/jquery-1.12.2.min.js"></script>
@@ -22,6 +64,11 @@
 <script src="javascripts/libs/handlebars-v4.0.5.js"></script>
 <script src="javascripts/libs/backbone-min.js"></script>
 <script src="javascripts/app.js"></script>
+<script src="javascripts/models/channel.js"></script>
+<script src="javascripts/collections/channels.js"></script>
+<script src="javascripts/views/channelView.js"></script>
+<script src="javascripts/views/appView.js"></script>
+<script src="javascripts/main.js"></script>
 </body>
 
 </html>
